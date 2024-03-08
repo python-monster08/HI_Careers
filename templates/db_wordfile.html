@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Word Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Word Document</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Options</th>
+                <th>Correct Answer</th>
+                <th>Marks</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question in questions %}
+            <tr>
+                <td>{{ question.question|safe }}</td>
+                <td>
+                    {% for option in question.option_set.all %}
+                        {{ option.option }}. {{ option.option_text }}<br>
+                    {% endfor %}
+                </td>
+                <td>{{ question.correct_answer_option }}</td>
+                <td>{{ question.marks }}</td>
+                <td>{{ question.subject_of_exam }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'generate_word_document' %}" class="btn btn-primary">Generate Document</a>
+</body>
+</html>
