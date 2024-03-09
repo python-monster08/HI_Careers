@@ -6,6 +6,7 @@ from django.utils.html import strip_tags
 @admin.register(QuestionType)
 class QuestionTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'type_name')
+    list_display_links = ['type_name']
 @admin.register(DegreeOfDifficulty)
 class DegreeOfDifficultyAdmin(admin.ModelAdmin):
     list_display = ('id', 'difficulty_title')

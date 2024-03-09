@@ -17,15 +17,15 @@ class DegreeOfDifficulty(models.Model):
     
 class Question(models.Model):
     question_type = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
-    question = RichTextField()  # Changed to TextField for longer questions
+    question = models.TextField()  # Changed to TextField for longer questions
 
     option_a = models.CharField(max_length=255)
-    option_b = models.CharField(max_length=255)
-    option_c = models.CharField(max_length=255)
-    option_d = models.CharField(max_length=255)
+    option_b = models.CharField(max_length=255, null=True, blank=True)
+    option_c = models.CharField(max_length=255, null=True, blank=True)
+    option_d = models.CharField(max_length=255, null=True, blank=True)
 
     correct_answer_option = models.CharField(max_length=1, choices=[('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')])
-    correct_answer_description = RichTextField()  # Changed to TextField for longer descriptions
+    correct_answer_description = models.TextField()  # Changed to TextField for longer descriptions
 
     marks = models.IntegerField()
     negative_marks = models.IntegerField(null=True, blank=True)
@@ -58,4 +58,5 @@ class Question(models.Model):
 
     def __str__(self):
         return str(self.question_type)
-    
+
+
