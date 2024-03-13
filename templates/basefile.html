@@ -22,7 +22,17 @@
 
     <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
 
-    <title>Farol - Bootstrap 5 Admin Dashboard Template</title>
+    <!--Add your page Title here using this block-->
+    <title>
+      {% block title %}
+      
+      {% endblock title %}
+    </title>
+
+    <!--Add Custom Css Here using this block-->
+    {% block custom_css %}\
+    
+    {% endblock custom_css %}
   </head>
   <body>
     <div class="preloader" id="preloader">
@@ -182,7 +192,10 @@
     <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
     <script src="{% static 'assets/js/custom/lms-courses.js' %}"></script>
     <script src="{% static 'assets/js/custom/custom.js' %}"></script>
+    <!--Add Custom Css Here using this block-->
+    {% block custom_js %}\
+    
+    {% endblock custom_js %}
   </body>
 
-  <!-- Mirrored from templates.hibootstrap.com/farol/lms-courses.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Mar 2024 10:10:01 GMT -->
-</html>
+ </html>

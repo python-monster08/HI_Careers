@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from ckeditor.fields import RichTextField
+# from ckeditor.fields import RichTextField
 import json
 
 class QuestionType(models.Model):
@@ -15,17 +15,24 @@ class DegreeOfDifficulty(models.Model):
     def __str__(self):
         return self.difficulty_title
     
+
+class Keyword(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
+    
 class Question(models.Model):
     question_type = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
-    question = models.TextField()  # Changed to TextField for longer questions
-
+    question = models.TextField()
+    
     option_a = models.CharField(max_length=255)
     option_b = models.CharField(max_length=255, null=True, blank=True)
     option_c = models.CharField(max_length=255, null=True, blank=True)
     option_d = models.CharField(max_length=255, null=True, blank=True)
 
     correct_answer_option = models.CharField(max_length=1, choices=[('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')])
-    correct_answer_description = models.TextField()  # Changed to TextField for longer descriptions
+    correct_answer_description = models.TextField()
 
     marks = models.IntegerField()
     negative_marks = models.IntegerField(null=True, blank=True)
@@ -42,21 +49,16 @@ class Question(models.Model):
     applicability = models.CharField(max_length=255, null=True, blank=True)
     assigned_to = models.CharField(max_length=255, null=True, blank=True)
 
+    keywords = models.ManyToManyField(Keyword, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        # Set the created_at timestamp only on the initial save
         if not self.id:
             self.created_at = timezone.now()
-
-        # Always update the updated_at timestamp on each save
         self.updated_at = timezone.now()
-
         super().save(*args, **kwargs)
-
 
     def __str__(self):
         return str(self.question_type)
-
-

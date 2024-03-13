@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    width: 60%; /* Adjust as needed */
+  }
+  
+  .file-actions {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .file-actions button {
+    padding: 10px 15px;
+    margin-bottom: 10px; /* Space between buttons */
+    cursor: pointer;
+  }
+  
+  .file-uploader {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .drop-area {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  /* ... rest of your CSS ... */
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .file-actions, .file-uploader {
+      width: 100%;
+    }
+  }

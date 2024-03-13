@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import QuestionType, DegreeOfDifficulty, Question
+from .models import QuestionType, DegreeOfDifficulty, Question,Keyword
 from django.utils.html import strip_tags
 
 # Register your models here.
@@ -11,6 +11,9 @@ class QuestionTypeAdmin(admin.ModelAdmin):
 class DegreeOfDifficultyAdmin(admin.ModelAdmin):
     list_display = ('id', 'difficulty_title')
 
+@admin.register(Keyword)
+class KeywordAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
