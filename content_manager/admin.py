@@ -1,7 +1,7 @@
 # admin.py
 
 from django.contrib import admin
-from .models import Exam, Area, Part, Topic, Subtopic, Book, Note, Syllabus, QuestionBank, HIATeam, Student, Finance
+from .models import Exam, Area, Part, Topic, Subtopic, Book, Note, Syllabus, QuestionBank
 
 @admin.register(Exam)
 class ExamAdmin(admin.ModelAdmin):
@@ -39,14 +39,3 @@ class SyllabusAdmin(admin.ModelAdmin):
 class QuestionBankAdmin(admin.ModelAdmin):
     list_display = ['title', 'area']
 
-@admin.register(HIATeam)
-class HIATeamAdmin(admin.ModelAdmin):
-    list_display = ['name', 'role', 'contact']
-
-@admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'exam', 'enrollment_date', 'email']
-
-@admin.register(Finance)
-class FinanceAdmin(admin.ModelAdmin):
-    list_display = ['student', 'transaction_date', 'amount', 'description']

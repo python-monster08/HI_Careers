@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2411p^jr)$8!i%h&ed#myjd=zkk7*rvyj^(szz74ob&m%m-mkj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.4','127.0.0.1','localhost']
 
 
 # Application definition
@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     # 'ckeditor',
     # 'ckeditor_uploader',
     'questions_module',
-    'content_manager',
-    # 'authentication',
+    'content_manager', 
+    'main_hia',
 ]
 
 MIDDLEWARE = [

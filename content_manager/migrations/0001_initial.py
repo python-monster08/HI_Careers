@@ -28,15 +28,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='HIATeam',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('role', models.CharField(max_length=255)),
-                ('contact', models.CharField(max_length=20)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Book',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -68,26 +59,6 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
                 ('content', models.TextField()),
                 ('area', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='content_manager.area')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Student',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('enrollment_date', models.DateField()),
-                ('email', models.EmailField(max_length=254)),
-                ('exam', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='content_manager.exam')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Finance',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('transaction_date', models.DateField()),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('description', models.TextField()),
-                ('student', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='content_manager.student')),
             ],
         ),
         migrations.CreateModel(
